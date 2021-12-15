@@ -10,3 +10,7 @@ The directory structure is as follows:
 
 2. pytorch: holds all code related to training and inferencing the CNN
    - The code in pytorch is self-contained and requires no external directories.
+   - There exist two directories in pytorch named *inference* and *train*. The *inference* directory holds code related to inferencing the CNN and the directory *train* holds code related to training the CNN.
+  
+ ## Pipeline
+ The pipeline for this project is setup in three phases, data generation, training, and inferencing. Data in the form of images is created in the data generation phase. These images are then passed to the training phase where the CNN is trained and a saved model is produced. The inferencing phase utilizes the saved model to predict the new images. The pipeline is setup this way to allow for independence between each phase.

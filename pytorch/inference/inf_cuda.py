@@ -43,7 +43,7 @@ def gstreamer_pipeline(
     capture_height=720,
     display_width=1280,
     display_height=720,
-    framerate=60,
+    framerate=120,
     flip_method=0,
 ):
     return (
@@ -69,7 +69,7 @@ if __name__ == '__main__':
     ### define data paths and vars###
     img_size = 48
     PATH = "state_dict_model.pt"
-    iteration = 2000
+    iteration = 1000
 
     ### call model ###
     model = get_model()

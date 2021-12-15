@@ -51,6 +51,7 @@ if __name__ == '__main__':
     model.eval()
 
     ### define cam ###
+    # for usb webcams only
     webcam = cv.VideoCapture(0)
     webcam.set(cv.CAP_PROP_FRAME_WIDTH, 960)
     webcam.set(cv.CAP_PROP_FRAME_HEIGHT, 1280)

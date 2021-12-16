@@ -4,7 +4,6 @@ import loss
 import arch
 import torch
 import numpy as np
-from torch import nn
 from torch import optim
 from dataset import LandingPadH, ToTensor
 from torch.utils.data import DataLoader

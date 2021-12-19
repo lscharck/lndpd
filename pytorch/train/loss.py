@@ -22,26 +22,38 @@ class CIoULoss(nn.Module):
         target_center_x = targets[:, 0]
         target_center_y = targets[:, 1]
 
-        left_wall = torch.max(input_center_x - input_width / 2, target_center_x - target_width / 2)
-        right_wall = torch.min(input_center_x + input_width / 2, target_center_x + target_width / 2)
-        upper_wall = torch.max(input_center_y - input_height / 2, target_center_y - target_height / 2)
-        lower_wall = torch.min(input_center_y + input_height / 2, target_center_y + target_height / 2)
+        left_wall = torch.max(input_center_x - input_width / 2, target_center_x
+                - target_width / 2)
+        right_wall = torch.min(input_center_x + input_width / 2, target_center_x
+                + target_width / 2)
+        upper_wall = torch.max(input_center_y - input_height / 2,
+                target_center_y - target_height / 2)
+        lower_wall = torch.min(input_center_y + input_height / 2,
+                target_center_y + target_height / 2)
 
-        intersection_area = torch.clamp((right_wall - left_wall),min=0) * torch.clamp((lower_wall - upper_wall), min=0)
+        intersection_area = (torch.clamp((right_wall - left_wall),min=0) *
+                torch.clamp((lower_wall - upper_wall), min=0))
 
         union = input_area + target_area - intersection_area
         iou = intersection_area / union
 
-        x_left = torch.min(input_center_x - input_width / 2, target_center_x - target_width / 2)
-        x_right = torch.max(input_center_x + input_width / 2, target_center_x + target_width / 2)
-        y_top = torch.min(input_center_y - input_height / 2, target_center_y - target_height / 2)
-        y_lower = torch.max(input_center_y + input_height / 2, target_center_y + target_height / 2)
+        x_left = torch.min(input_center_x - input_width / 2, target_center_x -
+                target_width / 2)
+        x_right = torch.max(input_center_x + input_width / 2, target_center_x +
+                target_width / 2)
+        y_top = torch.min(input_center_y - input_height / 2, target_center_y -
+                target_height / 2)
+        y_lower = torch.max(input_center_y + input_height / 2, target_center_y +
+                target_height / 2)
 
-        c = torch.clamp((x_right - x_left), min=0)**2 + torch.clamp((y_lower - y_top), min=0)**2
-        d = (input_center_x - target_center_x)**2 + (input_center_y - target_center_y)**2
+        c = torch.clamp((x_right - x_left), min=0)**2 + torch.clamp((y_lower -
+            y_top), min=0)**2
+        d = (input_center_x - target_center_x)**2 + (input_center_y -
+                target_center_y)**2
         D = d / c
 
-        v = (4 / (math.pi**2)) * torch.pow((torch.atan(target_width / target_height) - torch.atan(input_width / input_height)), 2)
+        v = (4 / (math.pi**2)) * torch.pow((torch.atan(target_width /
+            target_height) - torch.atan(input_width / input_height)), 2)
 
         with torch.no_grad():
             r = (iou>0.5).float()

@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#!/usr/bin/python3
 import time
 import loss
 import arch
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     ### define data paths and vars###
     bs = 32
     epochs = 1000
-    img_size = 32
+    img_size = 48
     lr = 0.001
     train_label_path = "/home/emma/Documents/train_labels.npy"
     valid_label_path = "/home/emma/Documents/valid_labels.npy"

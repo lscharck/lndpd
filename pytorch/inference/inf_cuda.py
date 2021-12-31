@@ -69,7 +69,7 @@ if __name__ == '__main__':
     ### define data paths and vars###
     img_size = 48
     PATH = "state_dict_model.pt"
-    iteration = 1000
+    iteration = 100
 
     ### call model ###
     model = get_model()

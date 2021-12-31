@@ -1,0 +1,4 @@
+# pycaches
+./pytorch/inference/__pycache__/
+./pytorch/train/__pycache__/
+./datagen/__pycache__/

@@ -15,9 +15,12 @@ def get_image():
     ret_val, image = cam.read()
     #cv.imwrite("image.png", image)
     image = cv.cvtColor(image,cv.COLOR_BGR2GRAY)
-    image = cv.resize(image, (img_size, img_size), interpolation=cv.INTER_LANCZOS4)
-    image = cv.fastNlMeansDenoising(image, None, h=10, templateWindowSize=7, searchWindowSize=21)
-    image = cv.normalize(image, None, alpha=-0.5, beta=0.5, norm_type=cv.NORM_MINMAX, dtype=cv.CV_32F)
+    image = cv.resize(image, (img_size, img_size),
+            interpolation=cv.INTER_LANCZOS4)
+    image = cv.fastNlMeansDenoising(image, None, h=10, templateWindowSize=7,
+            searchWindowSize=21)
+    image = cv.normalize(image, None, alpha=-0.5, beta=0.5,
+            norm_type=cv.NORM_MINMAX, dtype=cv.CV_32F)
     #np.save('image.npy', image)
     image = torch.from_numpy(image).to(device)
     image = image.expand(1, 1, img_size, img_size)

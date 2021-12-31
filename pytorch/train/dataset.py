@@ -16,7 +16,8 @@ class LandingPadH(Dataset):
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
-        image = np.load(os.path.join(self.root_dir, "image" + str(idx) + ".npy"))
+        image = np.load(os.path.join(self.root_dir, "image" + str(idx) +
+            ".npy"))
         label = self.label_file[idx]
         sample = {'image': image, 'label': label}
 

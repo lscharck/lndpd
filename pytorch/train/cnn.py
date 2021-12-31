@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#!/usr/bin/python3
 import time
 import loss
 import arch
@@ -39,7 +39,8 @@ def fit(epochs, model, loss_func, opt, sched, train_dl, valid_dl):
 
         model.eval()
         with torch.no_grad():
-            CIoU, iou, nums = zip(*[loss_batch(model, loss_func, xb, yb) for xb, yb in valid_dl])
+            CIoU, iou, nums = zip(*[loss_batch(model, loss_func, xb, yb) for xb,
+                yb in valid_dl])
         avg_CIoU = np.sum(np.multiply(CIoU, nums)) / np.sum(nums)
         avg_iou = np.sum(np.multiply(iou, nums)) / np.sum(nums)
         sched.step(avg_CIoU)
@@ -50,7 +51,8 @@ def fit(epochs, model, loss_func, opt, sched, train_dl, valid_dl):
 def get_model():
     model = arch.CNN().to(device)
     optimizer = optim.SGD(model.parameters(), lr=lr, momentum=0.9)
-    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', threshold=0.001, verbose=True)
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min',
+            threshold=0.001, verbose=True)
     return model, optimizer, scheduler
 
 # Get and format data
@@ -64,7 +66,7 @@ if __name__ == '__main__':
     ### define data paths and vars###
     bs = 32
     epochs = 1000
-    img_size = 32
+    img_size = 48
     lr = 0.001
     train_label_path = "/home/emma/Documents/train_labels.npy"
     valid_label_path = "/home/emma/Documents/valid_labels.npy"
@@ -72,8 +74,10 @@ if __name__ == '__main__':
     valid_data_path = "/home/emma/Documents/data/valid"
 
     ### create data sets ###
-    train_ds = LandingPadH(label_file=train_label_path, root_dir=train_data_path, transform=ToTensor())
-    valid_ds = LandingPadH(label_file=valid_label_path, root_dir=valid_data_path, transform=ToTensor())
+    train_ds = LandingPadH(label_file=train_label_path,
+            root_dir=train_data_path, transform=ToTensor())
+    valid_ds = LandingPadH(label_file=valid_label_path,
+            root_dir=valid_data_path, transform=ToTensor())
 
     print(f'Train dataset size: {len(train_ds)}\nValid dataset size {len(valid_ds)}')
 

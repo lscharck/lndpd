@@ -13,7 +13,7 @@ print(f'Using {device} device\n{threads} cpu threads')
 # image capture
 def get_image():
     status, image = webcam.read()
-    #cv.imwrite("image.png", image_in)
+    #cv.imwrite("home/pi/Desktop/image.png", image)
     image = cv.cvtColor(image,cv.COLOR_BGR2GRAY)
     image = cv.resize(image, (img_size, img_size),
             interpolation=cv.INTER_LANCZOS4)
@@ -21,7 +21,7 @@ def get_image():
             searchWindowSize=21)
     image = cv.normalize(image, None, alpha=-0.5, beta=0.5,
             norm_type=cv.NORM_MINMAX, dtype=cv.CV_32F)
-    #np.save('image.npy', image)
+    np.save('image.npy', image)
     image = torch.from_numpy(image)
     image = image.expand(1, 1, img_size, img_size)
 
@@ -41,10 +41,10 @@ def get_model():
     return model
 
 if __name__ == '__main__':
-    ### define data paths and vars###
+    ### define data paths and vars ###
     img_size = 48
     PATH = "state_dict_model.pt"
-    iteration = 200
+    iteration = 1
 
     ### call model ###
     model = get_model()

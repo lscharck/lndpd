@@ -2,6 +2,11 @@ import math
 import torch
 import torch.nn as nn
 
+#############################################################################
+# This code borrows ideas from 
+# https://github.com/Zzh-tju/CIoU/blob/master/layers/modules/multibox_loss.py
+#############################################################################
+
 class CIoULoss(nn.Module):
     def __init__(self):
         super(CIoULoss, self).__init__()

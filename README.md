@@ -18,6 +18,19 @@ The directory structure is as follows:
    - There exist two directories in pytorch named *inference* and *train*. The *inference* directory holds code related to inferencing the CNN and the directory *train* holds code related to training the CNN.
   
  ## Pipeline
- The pipeline for this project is setup in three phases, data generation, training, and inferencing. Data in the form of images is created in the data generation phase. These images are then passed to the training phase where the CNN is trained and a saved model is produced. The inferencing phase utilizes the saved model to predict the new images. The pipeline is setup this way to allow for independence between each phase.
+ The pipeline for this project is setup in three phases: data generation, training, and inferencing. Data in the form of images and labels are created in the data generation phase. These images with the corresponding labels are then passed to the training phase where the CNN is trained and a saved model is produced. The inferencing phase utilizes the saved model to predict the newly presented images. The pipeline is setup this way to allow for independence between each phase. Thus, any phase can be modified will mantaining interoperability between the other phases.
  
  ## Getting Started
+A more detailed technical guide is provided as "tch_doc.pptx" in a PowerPoint format. However, a novice user looking to directly run this neuarl network would be most interested in the following lines of code:
+
+```python
+
+  X = get_image()
+  y = infer(X)
+```
+
+This code segment can be located on lines 64 and 65 in "inf.py" in the inference directory. An identical code segment can be found in "inf_cude.py" for cuda supported devices. In either case the function "get_image" will get an image from the attached webcam while "infer" will query the neural network for the predicted center coordinates. Thus, the output from "infer" is a four element vector arranged as 
+
+[x, y, w, h]
+
+where x and y are the center coordinators as measured from the bottom left of the image. The output from "infer" can be utilized in anyway the user desires. As the program is written now the output will be written to the standard out. A previously trained model has been uploaded to this repository in the "train" directory. This model is trained over the traditional "H" landing pad similar to the sample image provided above.

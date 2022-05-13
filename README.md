@@ -33,4 +33,10 @@ This code segment can be located on lines 64 and 65 in "inf.py" in the inference
 
 [x, y, w, h]
 
-where x and y are the center coordinators as measured from the bottom left of the image. The output from "infer" can be utilized in anyway the user desires. As the program is written now the output will be written to the standard out. A previously trained model has been uploaded to this repository in the "train" directory. This model is trained over the traditional "H" landing pad similar to the sample image provided above.
+where x and y are the center coordinators as measured from the bottom left of the image. The output from "infer" can be utilized in anyway the user desires. As the program is written now the output will be written to the standard out. A previously trained model has been uploaded to this repository in the "train" directory. This model is trained over the traditional "H" landing pad similar to the sample image provided above. In addition to the code provided several python libraries will be needed to run the program. The libraries are as follows:
+
+1. torch
+2. cv2
+3. numpy
+
+Installing these libraries is as simple as a "pip3 install"

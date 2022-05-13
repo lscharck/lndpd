@@ -34,7 +34,7 @@ class CNN(nn.Module):
             nn.Flatten(),
             nn.Linear(160, 160),
             nn.PReLU(160),
-            nn.Dropout2d(0.5),
+            nn.Dropout(0.5),
 
             nn.Linear(160, 4)
         )

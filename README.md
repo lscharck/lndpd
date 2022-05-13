@@ -18,10 +18,10 @@ The directory structure is as follows:
    - There exist two directories in pytorch named *inference* and *train*. The *inference* directory holds code related to inferencing the CNN and the directory *train* holds code related to training the CNN.
   
  ## Pipeline
- The pipeline for this project is setup in three phases: data generation, training, and inferencing. Data in the form of images and labels are created in the data generation phase. These images with the corresponding labels are then passed to the training phase where the CNN is trained and a saved model is produced. The inferencing phase utilizes the saved model to predict the newly presented images. The pipeline is setup this way to allow for independence between each phase. Thus, any phase can be modified will mantaining interoperability between the other phases.
+ The pipeline for this project is setup in three phases: data generation, training, and inferencing. Data in the form of images and labels are created in the data generation phase. These images with the corresponding labels are then passed to the training phase where the CNN is trained and a saved model is produced. The inferencing phase utilizes the saved model to predict the newly presented images. The pipeline is setup this way to allow for independence between each phase. Thus, any phase can be modified will maintaining interoperability between the other phases.
  
  ## Getting Started
-A more detailed technical guide is provided as "tch_doc.pptx" in a PowerPoint format. However, a novice user looking to directly run this neuarl network would be most interested in the following lines of code:
+A more detailed technical guide is provided as "tch_doc.pptx" in a PowerPoint format. However, a novice user looking to directly run this neural network would be most interested in the following lines of code:
 
 ```python
 
